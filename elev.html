@@ -35,7 +35,6 @@
         </div>
 
 
-        <!-- Error message -->
         <div
             id="errorBox"
             class="error-box"
@@ -43,18 +42,20 @@
         </div>
 
 
-        <!-- Group code -->
-        <label for="groupCodeInput">
-            Gruppekode
+        <!-- Group dropdown -->
+        <label for="groupSelect">
+            Gruppe
         </label>
 
-        <input
-            type="text"
-            id="groupCodeInput"
-            placeholder="Indtast jeres gruppekode">
+        <select id="groupSelect">
+
+            <option value="">
+                Vælg gruppe
+            </option>
+
+        </select>
 
 
-        <!-- Car type -->
         <label for="carTypeSelect">
             Biltype
         </label>
@@ -84,7 +85,6 @@
         </select>
 
 
-        <!-- Road type -->
         <label for="roadTypeSelect">
             Vejtype
         </label>
@@ -110,7 +110,6 @@
         </select>
 
 
-        <!-- Start button -->
         <button
             class="start-measure-btn"
             onclick="startSession()">
@@ -121,7 +120,7 @@
 
 
         <div class="info-text">
-            Du kan ikke starte før gruppekode, biltype og vejtype er udfyldt
+            Du kan ikke starte før gruppe, biltype og vejtype er udfyldt
         </div>
 
     </div>
@@ -129,13 +128,8 @@
 </div>
 
 
-<!-- Axios -->
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
-<!-- Shared API -->
 <script src="api.js"></script>
-
-<!-- Student logic -->
 <script src="elev.js"></script>
 
 </body>

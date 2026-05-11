@@ -7,13 +7,82 @@ let selectedSpeedLimit = 0;
 let selectedScalingFactor = 0;
 
 
+// Loads groups into dropdown - US8
+async function loadGroupsForStudent() {
+
+    const groupSelect =
+        document.getElementById("groupSelect");
+
+    if (groupSelect === null) {
+        return;
+    }
+
+    groupSelect.innerHTML =
+        "<option value=''>Indlæser grupper...</option>";
+
+    try {
+
+        const response =
+            await axios.get(
+                apiUrl + "/Groups"
+            );
+
+        const groups =
+            response.data;
+
+        groupSelect.innerHTML =
+            "<option value=''>Vælg gruppe</option>";
+
+        for (let index = 0; index < groups.length; index++) {
+
+            const group =
+                groups[index];
+
+            const option =
+                document.createElement("option");
+
+            option.value =
+                group.id;
+
+            option.textContent =
+                group.name + " - " + group.school;
+
+            if (group.isLocked === true) {
+
+                option.disabled =
+                    true;
+
+                option.textContent =
+                    group.name + " - " + group.school + " (aktiv session)";
+            }
+
+            groupSelect.appendChild(
+                option
+            );
+        }
+    }
+
+    catch(error) {
+
+        console.log(error);
+
+        groupSelect.innerHTML =
+            "<option value=''>Kunne ikke hente grupper</option>";
+
+        showError(
+            "Kunne ikke hente grupper"
+        );
+    }
+}
+
+
 // Start session - US8
 async function startSession() {
 
     clearError();
 
-    const groupCodeInput =
-        document.getElementById("groupCodeInput");
+    const groupSelect =
+        document.getElementById("groupSelect");
 
     const carTypeSelect =
         document.getElementById("carTypeSelect");
@@ -21,12 +90,12 @@ async function startSession() {
     const roadTypeSelect =
         document.getElementById("roadTypeSelect");
 
-    if (groupCodeInput === null || carTypeSelect === null || roadTypeSelect === null) {
+    if (groupSelect === null || carTypeSelect === null || roadTypeSelect === null) {
         showError("Siden mangler nødvendige felter");
         return;
     }
 
-    if (groupCodeInput.value === "" || carTypeSelect.value === "" || roadTypeSelect.value === "") {
+    if (groupSelect.value === "" || carTypeSelect.value === "" || roadTypeSelect.value === "") {
         showError("Du kan ikke starte før alle felter er udfyldt");
         return;
     }
@@ -44,12 +113,9 @@ async function startSession() {
     }
 
     const newSession = {
-        groupId: Number(groupCodeInput.value),
+        groupId: Number(groupSelect.value),
         carType: selectedCarType,
-        roadType: selectedRoadType,
-        speedLimit: selectedSpeedLimit,
-        scalingFactor: selectedScalingFactor,
-        status: "Started"
+        roadType: selectedRoadType
     };
 
     try {
@@ -67,7 +133,12 @@ async function startSession() {
 
         localStorage.setItem(
             "groupId",
-            groupCodeInput.value
+            groupSelect.value
+        );
+
+        localStorage.setItem(
+            "groupName",
+            groupSelect.options[groupSelect.selectedIndex].textContent
         );
 
         localStorage.setItem(
@@ -98,6 +169,19 @@ async function startSession() {
 
         console.log(error);
 
+        if (error.response !== undefined &&
+            error.response !== null &&
+            error.response.data !== undefined &&
+            error.response.data !== null &&
+            error.response.data.message !== undefined) {
+
+            showError(
+                error.response.data.message
+            );
+
+            return;
+        }
+
         showError(
             "Kunne ikke starte session"
         );
@@ -117,10 +201,10 @@ function setRoadValues(roadValue) {
     selectedScalingFactor =
         0;
 
-    if (roadValue === "Byzone") {
+    if (roadValue === "Byzone" || roadValue === "byzone 50") {
 
         selectedRoadType =
-            "Byzone";
+            "byzone 50";
 
         selectedSpeedLimit =
             50;
@@ -129,10 +213,10 @@ function setRoadValues(roadValue) {
             10;
     }
 
-    if (roadValue === "Landevej") {
+    if (roadValue === "Landevej" || roadValue === "landevej 80") {
 
         selectedRoadType =
-            "Landevej";
+            "landevej 80";
 
         selectedSpeedLimit =
             80;
@@ -141,16 +225,73 @@ function setRoadValues(roadValue) {
             15;
     }
 
-    if (roadValue === "Motorvej") {
+    if (roadValue === "Motorvej" || roadValue === "motorvej 130") {
 
         selectedRoadType =
-            "Motorvej";
+            "motorvej 130";
 
         selectedSpeedLimit =
             130;
 
         selectedScalingFactor =
             20;
+    }
+}
+
+
+// Loads session page display
+function loadStudentSessionPage() {
+
+    const groupDisplay =
+        document.getElementById("groupDisplay");
+
+    const carTypeDisplay =
+        document.getElementById("carTypeDisplay");
+
+    const roadTypeDisplay =
+        document.getElementById("roadTypeDisplay");
+
+    const speedLimitDisplay =
+        document.getElementById("speed-limit-display");
+
+    const limitBadge =
+        document.getElementById("limit-badge");
+
+    const groupName =
+        localStorage.getItem("groupName");
+
+    const carType =
+        localStorage.getItem("carType");
+
+    const roadType =
+        localStorage.getItem("roadType");
+
+    const speedLimit =
+        localStorage.getItem("speedLimit");
+
+    if (groupDisplay !== null) {
+        groupDisplay.innerHTML =
+            safeText(groupName);
+    }
+
+    if (carTypeDisplay !== null) {
+        carTypeDisplay.innerHTML =
+            safeText(carType);
+    }
+
+    if (roadTypeDisplay !== null) {
+        roadTypeDisplay.innerHTML =
+            safeText(roadType);
+    }
+
+    if (speedLimitDisplay !== null) {
+        speedLimitDisplay.innerHTML =
+            safeText(speedLimit);
+    }
+
+    if (limitBadge !== null) {
+        limitBadge.innerHTML =
+            safeText(speedLimit);
     }
 }
 
@@ -784,6 +925,8 @@ function showFunFact() {
 
 // Page load
 window.addEventListener("load", function() {
+
+    loadGroupsForStudent();
 
     const nextButton =
         document.querySelector(".next-button");
