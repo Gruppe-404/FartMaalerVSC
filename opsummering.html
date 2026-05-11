@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elev – Opsummering</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<main class="summary-page">
+
+    <!-- titel -->
+    <header class="summary-header">
+        <h1>Min historik</h1>
+        <p>Se dine tidligere målinger og din udvikling over tid.</p>
+    </header>
+
+
+    <div class="summary-layout">
+
+        <!-- filtre (venstre) -->
+        <aside class="summary-filters card">
+
+            <h2>Filtre</h2>
+
+            <div class="filter-block">
+                <label class="filter-label">Vejtype</label>
+                <div class="filter-select">
+                    <span>⚠️</span>
+                    <select>
+                        <option>Alle vejtyper</option>
+                        <option>Byzone (50 km/t)</option>
+                        <option>Landevej (80 km/t)</option>
+                        <option>Motorvej (130 km/t)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="filter-block">
+                <label class="filter-label">Biltype</label>
+                <div class="filter-select">
+                    <span>🚗</span>
+                    <select>
+                        <option>Alle biltyper</option>
+                        <option>Benzin - lille</option>
+                        <option>Benzin - stor</option>
+                        <option>Diesel</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="filter-block">
+                <label class="filter-label">Dato</label>
+                <div class="filter-date">---</div>
+            </div>
+
+            <button class="filter-apply">Anvend filtre</button>
+            <button class="filter-reset">Ryd filtre</button>
+
+        </aside>
+
+        <!-- sessionner tabel -->
+        <section class="summary-sessions card">
+
+            <div class="sessions-header">
+                <h2>Dine sessioner (---)</h2>
+            </div>
+
+            <table class="sessions-table">
+                <thead>
+                    <tr>
+                        <th>Dato</th>
+                        <th>Tidspunkt</th>
+                        <th>Vejtype</th>
+                        <th>Biltype</th>
+                        <th>Gns. hastighed</th>
+                        <th>Gns. CO₂</th>
+                        <th>Score</th>
+                        <th>Detaljer</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <!-- placeholder rækker -->
+                    <tr>
+                        <td>---</td>
+                        <td>---</td>
+                        <td>---</td>
+                        <td>---</td>
+                        <td>---</td>
+                        <td>---</td>
+                        <td><span class="score-tag green">---</span></td>
+                        <td><button class="details-btn">👁️</button></td>
+                    </tr>
+
+                    <tr>
+                        <td>---</td>
+                        <td>---</td>
+                        <td>---</td>
+                        <td>---</td>
+                        <td>---</td>
+                        <td>---</td>
+                        <td><span class="score-tag green">---</span></td>
+                        <td><button class="details-btn">👁️</button></td>
+                    </tr>
+
+                    <tr>
+                        <td>---</td>
+                        <td>---</td>
+                        <td>---</td>
+                        <td>---</td>
+                        <td>---</td>
+                        <td>---</td>
+                        <td><span class="score-tag yellow">---</span></td>
+                        <td><button class="details-btn">👁️</button></td>
+                    </tr>
+
+                    <tr>
+                        <td>---</td>
+                        <td>---</td>
+                        <td>---</td>
+                        <td>---</td>
+                        <td>---</td>
+                        <td>---</td>
+                        <td><span class="score-tag orange">---</span></td>
+                        <td><button class="details-btn">👁️</button></td>
+                    </tr>
+
+                    <tr>
+                        <td>---</td>
+                        <td>---</td>
+                        <td>---</td>
+                        <td>---</td>
+                        <td>---</td>
+                        <td>---</td>
+                        <td><span class="score-tag red">---</span></td>
+                        <td><button class="details-btn">👁️</button></td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+            <div class="table-footer">
+                Viser ...–--- af --- sessioner
+            </div>
+
+        </section>
+
+        <!-- graf (højre side) -->
+        <aside class="summary-chart card">
+            <h2>Udvikling over tid</h2>
+
+            <div class="chart-placeholder">
+                <span>--- graf kommer her ---</span>
+            </div>
+        </aside>
+
+    </div>
+
+
+    <!-- bedste session -->
+    <section class="summary-best card">
+        <div class="best-score">---</div>
+
+        <div class="best-info">
+            <p><strong>---</strong></p>
+            <p>---</p>
+            <p>---</p>
+        </div>
+
+        <button class="details-btn large">Se detaljer →</button>
+    </section>
+
+</main>
+
+</body>
+</html>

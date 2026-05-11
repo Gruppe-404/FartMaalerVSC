@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="da">
+    <head>
+        <meta charset="UTF-8">
+        <title>Fartmåler</title>
+        <link rel="stylesheet" href="Style.css">
+    </head>
+    
+    <body>
+
+     <header class="navbar">
+    <div class="logo">Fartmåler</div>
+
+    <div class="login">
+        <button class="teacher-login-btn" onclick="goToTeacherLogin()">
+            Underviser login →
+        </button>
+    </div>
+</header>
+
+        <!-- hero -->
+        <section class="hero">
+            <h1>Gør fart til <span>læring 🌱</span></h1>
+
+            <p>
+                Fartmåler hjælper elever med at forstå sammenhængen mellem fart,
+                CO₂-udledning og miljø gennem interaktive målinger.
+            </p>
+
+            <button class="start-btn" onclick="goToMeasurement()">
+                Start din måling →
+            </button>
+        </section>
+
+        <!--features-->
+        <section class="features">
+            <div class="card">🌱 Forstå CO₂</div>
+            <div class="card">👥 Sammenlign</div>
+            <div class="card">🏆 Bliv bedre</div>
+            <div class="card">📊 Se udviklingen</div>
+        </section>
+
+        <section class="main">
+
+            <div class="leaderboard">
+                <h3>Leaderboard</h3>
+
+                <ul>
+                    <li>
+                        <div class="left">
+                            <div class="rank">1</div>
+                            Hellerup skole
+                        </div>
+                        <span class="green">11 Kg CO₂ 🌱</span>
+                    </li>
+
+                    <li>
+                        <div class="left">
+                            <div class="rank">2</div>
+                            Skolen ved Sundet
+                        </div>
+                        <span class="green">14 Kg CO₂ 🌱</span>
+                    </li>
+
+                    <li>
+                        <div class="left">
+                            <div class="rank">3</div>
+                            Søborg Skole
+                        </div>
+                        <span class="green">17 Kg CO₂ 🌱</span>
+                    </li>
+
+                    <li>
+                        <div class="left">
+                            <div class="rank">4</div>
+                            Viby Skole
+                        </div>
+                        <span class="yellow">20 Kg CO₂ 🟡</span>
+                    </li>
+
+                    <li>
+                        <div class="left">
+                            <div class="rank">5</div>
+                            Risskov Skole
+                        </div>
+                        <span class="yellow">23 Kg CO₂ 🟡</span>
+                    </li>
+
+                    <li>
+                        <div class="left">
+                            <div class="rank">6</div>
+                            Enghavegård Skole
+                        </div>
+                        <span class="yellow">27 Kg CO₂ 🟡</span>
+                    </li>
+
+                    <li>
+                        <div class="left">
+                            <div class="rank">7</div>
+                            Tingbjerg Skole
+                        </div>
+                        <span class="yellow">31 Kg CO₂ 🟡</span>
+                    </li>
+
+                    <li>
+                        <div class="left">
+                            <div class="rank">8</div>
+                            Nørre Fælled Skole
+                        </div>
+                        <span class="yellow">35 Kg CO₂ 🟡</span>
+                    </li>
+
+                    <li>
+                        <div class="left">
+                            <div class="rank">9</div>
+                            Holme Skole
+                        </div>
+                        <span class="red">39 Kg CO₂ 🔴</span>
+                    </li>
+
+                    <li>
+                        <div class="left">
+                            <div class="rank">10</div>
+                            Langhøjskolen
+                        </div>
+                        <span class="red">44 Kg CO₂ 🔴</span>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="visual">
+                <img src="bil.png" alt="Fartmåler bil">
+
+                <div class="info-box">
+                    🌱 Jo lavere fart, jo lavere CO₂-udledning.<br>
+                    Hver måling gør en forskel!
+                </div>
+            </div>
+             <script src="index.js"></script>
+
+        </section>
+
+    </body>
+</html>

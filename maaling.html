@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Målinger - Underviser</title>
+    <link rel="stylesheet" href="underviser.css">
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="sidebar-title">
+            <span class="sidebar-icon">📊</span>
+            <h2>Fartmåler</h2>
+        </div>
+
+   <nav class="sidebar-menu">
+            <a href="overblik.html" class="menu-item">
+                <span>🏠</span> Overblik
+            </a>
+
+            <a href="maaling.html" class="menu-item">
+                <span>📏</span> Målinger
+            </a>
+
+            <a href="gruppe.html" class="menu-item">
+                <span>👥</span> Grupper
+            </a>
+
+            <a href="leaderboard.html" class="menu-item">
+                <span>🏆</span> Leaderboard
+            </a>
+
+            <a href="indstillinger.html" class="menu-item">
+                <span>⚙️</span> Indstillinger
+            </a>
+        </nav>
+    </aside>
+
+
+
+    <!-- MAIN CONTENT -->
+    <main class="content">
+
+        <!-- HEADER -->
+        <header class="topbar">
+            <div class="welcome-text">
+                <h1>Grupper</h1>
+                <p>Se og sammenlign gruppernes resultater og udvikling</p>
+            </div>
+
+            <div class="topbar-actions">
+
+                <div class="user-box">
+                    <div class="user-info">
+                        <strong>---</strong>
+                        <span>---</span>
+                    </div>
+                    <button class="logout-btn global-logout">Log ud →</button>
+                </div>
+            </div>
+        </header>
+
+
+
+        <!-- KPI ROW -->
+        <section class="kpi-row">
+
+            <div class="kpi-card">
+                <div class="kpi-icon">👥</div>
+                <p>Antal grupper</p>
+                <h2>---</h2>
+            </div>
+
+            <div class="kpi-card">
+                <div class="kpi-icon">🧒</div>
+                <p>Antal elever</p>
+                <h2>---</h2>
+            </div>
+
+            <div class="kpi-card">
+                <div class="kpi-icon">🚗</div>
+                <p>Gns. hastighed</p>
+                <h2>--- km/t</h2>
+            </div>
+
+            <div class="kpi-card">
+                <div class="kpi-icon">🌿</div>
+                <p>Gns. CO₂-udledning</p>
+                <h2>--- g</h2>
+            </div>
+
+            <div class="kpi-card">
+                <div class="kpi-icon">🏆</div>
+                <p>Gns. score</p>
+                <h2>---</h2>
+            </div>
+
+        </section>
+
+
+
+        <!-- MAIN GRID -->
+        <section class="mailer-grid">
+
+            <!-- GRUPPEOVERSIGT -->
+            <div class="card group-overview">
+
+                <div class="group-header">
+                    <h3>Gruppeoversigt</h3>
+                    <input type="text" placeholder="Søg efter gruppe..." class="search-field">
+                </div>
+
+                <table class="group-overview-table">
+                    <thead>
+                        <tr>
+                            <th>Gruppe</th>
+                            <th>Antal elever</th>
+                            <th>Gns. hastighed</th>
+                            <th>Gns. CO₂</th>
+                            <th>Gns. score</th>
+                            <th>Udvikling</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td><span class="tag tag-purple">G3</span> Gruppe 3</td>
+                            <td>---</td>
+                            <td>--- km/t</td>
+                            <td>--- g</td>
+                            <td class="green">---</td>
+                            <td class="green">--- </td>
+                        </tr>
+
+                        <tr>
+                            <td><span class="tag tag-green">G2</span> Gruppe 2</td>
+                            <td>---</td>
+                            <td>--- km/t</td>
+                            <td>--- g</td>
+                            <td class="yellow">---</td>
+                            <td class="yellow">--- </td>
+                        </tr>
+
+                        <tr>
+                            <td><span class="tag tag-blue">G1</span> Gruppe 1</td>
+                            <td>---</td>
+                            <td>--- km/t</td>
+                            <td>--- g</td>
+                            <td class="orange">---</td>
+                            <td class="red">---</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+
+            <!-- GRAF -->
+            <div class="card group-graph">
+                <div class="graph-header">
+                    <h3>Udvikling over tid (gennemsnit for grupper)</h3>
+                    <button class="period-btn small">Daglig visning ▾</button>
+                </div>
+
+                <div class="graph-placeholder">graf kommer her</div>
+            </div>
+
+        </section>
+
+
+
+        <!-- SAMMENLIGNING -->
+        <section class="card comparison-card">
+
+            <h3>Gruppernes resultater sammenlignet</h3>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Gruppe</th>
+                        <th>Score</th>
+                        <th>Scorefordeling</th>
+                        <th>Gns. hastighed</th>
+                        <th>Gns. CO₂</th>
+                        <th>Udvikling</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>Gruppe 1</td>
+                        <td class="green">---</td>
+                        <td>
+                            <div class="bar green"></div>
+                        </td>
+                        <td>--- km/t</td>
+                        <td>--- g</td>
+                        <td class="green">---</td>
+                    </tr>
+
+                    <tr>
+                        <td>Gruppe 2</td>
+                        <td class="yellow">---</td>
+                        <td>
+                            <div class="bar yellow"></div>
+                        </td>
+                        <td>--- km/t</td>
+                        <td>--- g</td>
+                        <td class="orange">---</td>
+                    </tr>
+
+                    <tr>
+                        <td>Gruppe 3</td>
+                        <td class="orange">---</td>
+                        <td>
+                            <div class="bar orange"></div>
+                        </td>
+                        <td>--- km/t</td>
+                        <td>--- g</td>
+                        <td class="red">---</td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+            <div class="legend">
+                <span class="dot green"></span> Perfekt (40-50)
+                <span class="dot lightgreen"></span> Rigtig godt (30-39)
+                <span class="dot yellow"></span> Godt (20-29)
+                <span class="dot orange"></span> OK (10-19)
+                <span class="dot red"></span> Under grænsen (0-9)
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+<script>
+const links = document.querySelectorAll(".menu-item");
+const currentPage = window.location.pathname.split("/").pop();
+
+links.forEach(link => {
+    if (link.getAttribute("href") === currentPage) {
+        link.classList.add("active");
+    }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grupper – Underviser</title>
+    <link rel="stylesheet" href="underviser.css">
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="sidebar-title">
+            <span class="sidebar-icon">📊</span>
+            <h2>Fartmåler</h2>
+        </div>
+
+       <nav class="sidebar-menu">
+            <a href="overblik.html" class="menu-item">
+                <span>🏠</span> Overblik
+            </a>
+
+            <a href="maaling.html" class="menu-item">
+                <span>📏</span> Målinger
+            </a>
+
+            <a href="gruppe.html" class="menu-item">
+                <span>👥</span> Grupper
+            </a>
+
+            <a href="leaderboard.html" class="menu-item">
+                <span>🏆</span> Leaderboard
+            </a>
+
+            <a href="indstillinger.html" class="menu-item">
+                <span>⚙️</span> Indstillinger
+            </a>
+        </nav>
+    </aside>
+
+
+
+    <!-- MAIN CONTENT -->
+    <main class="content">
+
+        <!-- HEADER -->
+        <header class="topbar">
+            <div class="welcome-text">
+                <h1>Velkommen, Underviser!</h1>
+                <p>Her er et overblik over grupperne.</p>
+            </div>
+
+            <div class="topbar-actions">
+                <div class="user-box">
+                    <div class="user-info">
+                        <strong>---</strong>
+                        <span>---</span>
+                    </div>
+                    <button class="logout-btn global-logout">Log ud →</button>
+                </div>
+            </div>
+        </header>
+
+
+        <!-- GROUP MANAGEMENT CARD -->
+        <section class="card group-card">
+
+            <!-- CREATE GROUP -->
+            <div class="group-create">
+                <h3>Opret en gruppe</h3>
+
+                <div class="group-create-row">
+                    <input type="text" placeholder="Gruppenavn">
+                    <button class="save-btn">Opret</button>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <!-- GROUP LIST -->
+            <div class="group-list">
+
+                <h3>Alle grupper</h3>
+
+                <table class="group-table">
+                    <thead>
+                        <tr>
+                            <th>Gruppenavn</th>
+                            <th style="text-align:right;">Handlinger</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>---</td>
+                            <td class="actions">
+                                <button class="edit-btn">Rediger</button>
+                                <button class="delete-btn-sm">Slet</button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>---</td>
+                            <td class="actions">
+                                <button class="edit-btn">Rediger</button>
+                                <button class="delete-btn-sm">Slet</button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>---</td>
+                            <td class="actions">
+                                <button class="edit-btn">Rediger</button>
+                                <button class="delete-btn-sm">Slet</button>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+</div>
+<script>
+const links = document.querySelectorAll(".menu-item");
+const currentPage = window.location.pathname.split("/").pop();
+
+links.forEach(link => {
+    if (link.getAttribute("href") === currentPage) {
+        link.classList.add("active");
+    }
+});
+</script>
+</body>
+
+</html>

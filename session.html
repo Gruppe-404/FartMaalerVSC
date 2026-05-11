@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elev måling</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<main class="page">
+<section class="dashboard">
+
+<!-- topbar -->
+<header class="topbar">
+    <div class="select-group">
+        <label>Gruppe</label>
+        <button class="select-button">👥 Gruppe 3 ▼</button>
+        <p class="active-session">🔒 Aktiv session</p>
+    </div>
+    
+
+    <div class="select-group">
+        <label>Biltype</label>
+        <button class="select-button">🚗 Benzin - lille ▼</button>
+    </div>
+
+    <div class="select-group">
+        <label>Vejtype</label>
+        <button class="select-button wide">⚠️ Byzone 50 (50 km/t) ▼</button>
+    </div>
+
+    <div class="session-actions">
+        <button class="end-session-button">📊 Afslut session</button>
+        <p>Session startede --:--</p>
+    </div>
+</header>
+
+<div class="notice">
+    🔒 Gruppen er låst mens session er aktiv
+</div>
+
+<section class="content-grid">
+
+<!-- venstre -->
+<section class="left-column">
+
+<article class="card latest-card">
+    <h2>Din seneste måling</h2>
+
+    <div class="speed-area">
+        <div class="gauge-wrapper">
+            <svg class="gauge" viewBox="0 0 260 150">
+                <path class="gauge-track"
+                    d="M35 125 A95 95 0 0 1 225 125" />
+            </svg>
+
+            <div class="speed-text">
+                <strong>--</strong>
+                <span>km/t</span>
+            </div>
+        </div>
+
+        <p class="muted">Simuleret hastighed</p>
+    </div>
+
+    <div class="status-box">
+        Hastighed status vises her
+    </div>
+</article>
+
+<article class="card session-card">
+    <h2>Din session</h2>
+
+    <div class="stats-grid">
+        <div class="stat-box">📊 Antal målinger<br><strong>--</strong></div>
+        <div class="stat-box">⚡ Gns. hastighed<br><strong>--</strong></div>
+        <div class="stat-box">🌿 CO₂ sparet<br><strong>--</strong></div>
+        <div class="stat-box">📈 Seneste måling<br><strong>--</strong></div>
+    </div>
+</article>
+
+</section>
+
+<!-- midt -->
+<section class="middle-column">
+
+<article class="card">
+    <h2>Sådan beregnes hastigheden</h2>
+
+    <div class="calculation-grid">
+        <div>Distance<br><strong>--</strong></div>
+        <div>Tid<br><strong>--</strong></div>
+        <div>Vejtype<br><strong>--</strong></div>
+    </div>
+
+    <div class="formula-box">
+        Hastighed = distance / tid × faktor
+    </div>
+</article>
+
+<article class="card">
+    <h2>Sammenlign med grænse</h2>
+
+    <div class="comparison-row">
+        <div class="speed-limit">50</div>
+        <div>Din hastighed<br><strong>--</strong></div>
+        <div>Afvigelse<br><strong>--</strong></div>
+    </div>
+</article>
+
+</section>
+
+<!-- højre -->
+<aside class="right-column">
+
+<!-- feedback -->
+<article class="card feedback-card">
+    <h2>Feedback</h2>
+
+    <div class="feedback-grid">
+        <button class="feedback-button">😠 For hurtigt</button>
+        <button class="feedback-button">😐 Under</button>
+        <button class="feedback-button">😊 Perfekt</button>
+    </div>
+
+    <div class="feedback-message">
+        Feedback vises her
+    </div>
+</article>
+
+<!-- indstillinger -->
+<article class="card settings-card">
+    <h2>Indstillinger</h2>
+
+    <div class="setting-row">
+        <span>🔔</span>
+        <p>Lyd (bip)</p>
+        <label class="switch">
+            <input type="checkbox" checked>
+            <span></span>
+        </label>
+    </div>
+
+    <div class="setting-row">
+        <span>🗣️</span>
+        <p>TTS (tale)</p>
+        <label class="switch">
+            <input type="checkbox" checked>
+            <span></span>
+        </label>
+    </div>
+
+    <div class="setting-row">
+        <span>👁️</span>
+        <p>Visuel feedback</p>
+        <label class="switch">
+            <input type="checkbox" checked>
+            <span></span>
+        </label>
+    </div>
+
+    <!-- fun fact -->
+    <div class="setting-row">
+        <span>💡</span>
+        <p>Fun facts</p>
+        <label class="switch">
+            <input type="checkbox" id="funfact-toggle" checked>
+            <span></span>
+        </label>
+    </div>
+
+</article>
+
+<button class="next-button">▶ Næste måling</button>
+
+</aside>
+
+</section>
+</section>
+</main>
+
+<!-- popup -->
+<div id="funfact-popup" class="funfact-toast">
+    <div class="funfact-toast-content">
+        <strong>Fun fact 🌍</strong>
+        <p>
+            Vidste du, at hvis alle i Danmark sænkede hastigheden med 10 km/t,
+            ville vi spare tusindvis af ton CO₂ om året?
+        </p>
+    </div>
+</div>
+
+<!-- js -->
+<script>
+const toggle = document.getElementById("funfact-toggle");
+const popup = document.getElementById("funfact-popup");
+
+window.onload = function () {
+    if (toggle.checked) {
+        showFunFact();
+    }
+};
+
+toggle.addEventListener("change", function () {
+    popup.style.display = this.checked ? "block" : "none";
+});
+
+function showFunFact() {
+    popup.style.display = "block";
+
+    // hide efter 5 sek
+    setTimeout(() => {
+        popup.style.display = "none";
+    }, 5000);
+}
+</script>
+
+</body>
+</html>

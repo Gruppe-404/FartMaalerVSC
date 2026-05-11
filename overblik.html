@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Underviser - Oversigt</title>
+    <link rel="stylesheet" href="underviser.css">
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- SIDEBAR (IKKE ÆNDRET) -->
+    <aside class="sidebar">
+
+        <div class="sidebar-title">
+            <span class="sidebar-icon">📊</span> 
+            <h2>Fartmåler</h2>
+        </div>
+
+        <nav class="sidebar-menu">
+            <a href="overblik.html" class="menu-item">
+                <span>🏠</span> Overblik
+            </a>
+
+            <a href="maaling.html" class="menu-item">
+                <span>📏</span> Målinger
+            </a>
+
+            <a href="gruppe.html" class="menu-item">
+                <span>👥</span> Grupper
+            </a>
+
+            <a href="leaderboard.html" class="menu-item">
+                <span>🏆</span> Leaderboard
+            </a>
+
+            <a href="indstillinger.html" class="menu-item">
+                <span>⚙️</span> Indstillinger
+            </a>
+        </nav>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="content">
+
+        <!-- TOP BAR -->
+        <header class="topbar">
+
+            <div class="welcome-text">
+                <h1>Hej, ---!</h1>
+                <p>Live overblik over elevernes fartmålinger</p>
+            </div>
+
+            <div class="topbar-actions">
+                <button class="logout-btn global-logout">Log ud →</button>
+            </div>
+
+        </header>
+
+
+        <!-- KPI CARDS (BEHOLDT) -->
+        <section class="kpi-row">
+
+            <div class="kpi-card">
+                <div class="kpi-icon">🚗</div>
+                <p>Gns. hastighed</p>
+                <h2>--- km/t</h2>
+            </div>
+
+            <div class="kpi-card">
+                <div class="kpi-icon">🌿</div>
+                <p>Gns. CO₂-udledning</p>
+                <h2>--- g</h2>
+            </div>
+
+            <div class="kpi-card">
+                <div class="kpi-icon">🏆</div>
+                <p>Gns. score</p>
+                <h2>---</h2>
+            </div>
+
+            <div class="kpi-card">
+                <div class="kpi-icon">📊</div>
+                <p>Antal målinger</p>
+                <h2>---</h2>
+            </div>
+
+        </section>
+
+
+        <!-- NYT DASHBOARD (SOM SKABELON) -->
+        <section class="dashboard-grid">
+
+            <!-- VENSTRE: LIVE TABLE -->
+            <div class="card dark-card">
+
+                <div class="card-header">
+                    <h3>Seneste målinger (live)</h3>
+                    <span class="live-badge">● Live</span>
+                </div>
+
+                <table class="dark-table">
+                    <thead>
+                        <tr>
+                            <th>Gruppe</th>
+                            <th>Hastighed</th>
+                            <th>CO₂</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>Gruppe 1</td>
+                            <td>... km/t</td>
+                            <td>...g</td>
+                            <td><span class="status green">Under</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>Gruppe 2</td>
+                            <td>... km/t</td>
+                            <td>...g</td>
+                            <td><span class="status red">Over</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>Gruppe 3</td>
+                            <td>... km/t</td>
+                            <td>...g</td>
+                            <td><span class="status blue">Præcis</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>Gruppe 4</td>
+                            <td colspan="3">Venter på måling...</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+
+            <!-- HØJRE: SCORE -->
+            <div class="card dark-card center">
+
+                <h3>Klasse score</h3>
+
+                <div class="score-circle">
+                    <span>...</span>
+                    <p>klasse gns.</p>
+                </div>
+
+                <p class="small-info">Aktive grupper: ... · Ledige: ...</p>
+
+            </div>
+
+        </section>
+
+    </main>
+</div>
+
+
+<script>
+const links = document.querySelectorAll(".menu-item");
+const currentPage = window.location.pathname.split("/").pop();
+
+links.forEach(link => {
+    if (link.getAttribute("href") === currentPage) {
+        link.classList.add("active");
+    }
+});
+</script>
+
+</body>
+</html>

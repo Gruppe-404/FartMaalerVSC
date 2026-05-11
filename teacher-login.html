@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <title>Underviser login</title>
+    <link rel="stylesheet" href="Style.css">
+</head>
+
+<body>
+
+<div class="measurement-container">
+
+    <div class="measurement-card">
+
+        <div class="header-row">
+            <div class="icon-circle">🔒</div>
+            <div>
+                <h1>Underviser login</h1>
+                <p>Log ind for at administrere systemet</p>
+            </div>
+        </div>
+
+        <label>Brugernavn</label>
+        <input type="text" placeholder="Indtast brugernavn">
+
+        <label>Adgangskode</label>
+        <input type="password" placeholder="Indtast adgangskode">
+
+        <button class="start-measure-btn" onclick="loginTeacher()">
+            Log ind →
+        </button>
+
+    </div>
+
+</div>
+
+<script>
+function loginTeacher() {
+    window.location.href = "overblik.html";
+}
+</script>
+
+</body>
+</html>

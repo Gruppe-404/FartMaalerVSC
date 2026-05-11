@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard – Underviser</title>
+    <link rel="stylesheet" href="underviser.css">
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="sidebar-title">
+            <span class="sidebar-icon">📊</span>
+            <h2>Fartmåler</h2>
+        </div>
+
+         <nav class="sidebar-menu">
+            <a href="overblik.html" class="menu-item">
+                <span>🏠</span> Overblik
+            </a>
+
+            <a href="maaling.html" class="menu-item">
+                <span>📏</span> Målinger
+            </a>
+
+            <a href="gruppe.html" class="menu-item">
+                <span>👥</span> Grupper
+            </a>
+
+            <a href="leaderboard.html" class="menu-item">
+                <span>🏆</span> Leaderboard
+            </a>
+
+            <a href="indstillinger.html" class="menu-item">
+                <span>⚙️</span> Indstillinger
+            </a>
+        </nav>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="content">
+
+        <!-- HEADER -->
+        <header class="topbar">
+            <div>
+                <h1>Leaderboard</h1>
+                <p>Se hvilke skoler, grupper og elever der udleder mindst CO₂.</p>
+            </div>
+
+            <div class="topbar-actions">
+
+                <div class="user-box">
+                    <button class="logout-btn global-logout">Log ud →</button>
+                </div>
+            </div>
+        </header>
+
+
+        <!-- TABS -->
+        <div class="leader-tabs">
+            <button class="leader-tab active">Skoler</button>
+            <button class="leader-tab">Grupper</button>
+        </div>
+
+
+        <!-- LEADERBOARD GRID -->
+        <section class="leaderboard-grid">
+
+            <!-- LEFT TABLE -->
+            <div class="card leader-table">
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Placering</th>
+                            <th>Skole</th>
+                            <th>Gns. CO₂</th>
+                            <th>Gns. hastighed</th>
+                            <th>Antal målinger</th>
+                            <th>Score</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <!-- Placeholder-rows -->
+                        <tr>
+                            <td><span class="rank gold">1</span></td>
+                            <td>---</td>
+                            <td>--- g</td>
+                            <td>--- km/t</td>
+                            <td>---</td>
+                            <td class="green">---</td>
+                        </tr>
+
+                        <tr>
+                            <td><span class="rank silver">2</span></td>
+                            <td>---</td>
+                            <td>--- g</td>
+                            <td>--- km/t</td>
+                            <td>---</td>
+                            <td class="green">---</td>
+                        </tr>
+
+                        <tr>
+                            <td><span class="rank bronze">3</span></td>
+                            <td>---</td>
+                            <td>--- g</td>
+                            <td>--- km/t</td>
+                            <td>---</td>
+                            <td class="yellow">---</td>
+                        </tr>
+
+                        <!-- more empty rows -->
+                        <tr><td>4</td><td>---</td><td>---</td><td>---</td><td>---</td><td class="yellow">---</td></tr>
+                        <tr><td>5</td><td>---</td><td>---</td><td>---</td><td>---</td><td class="orange">---</td></tr>
+                        <tr><td>6</td><td>---</td><td>---</td><td>---</td><td>---</td><td class="red">---</td></tr>
+
+                    </tbody>
+                </table>
+
+                <p class="table-note">
+                    Score er beregnet ud fra både CO₂-udledning og hastighed.
+                </p>
+
+            </div>
+
+
+            <!-- RIGHT PANEL -->
+            <div class="card leader-side">
+
+                <h3>Din skole</h3>
+
+                <div class="school-box">
+                    <div class="school-icon">🏫</div>
+
+                    <div>
+                        <strong>---</strong>
+                        <p>Din placering</p>
+                        <h2>--- / ---</h2>
+                        <p class="green">Score: ---</p>
+                    </div>
+                </div>
+
+                <h4>Top 3 skoler</h4>
+
+                <ol class="top-three">
+                    <li><span class="rank gold">1</span> --- <span class="right green">---</span></li>
+                    <li><span class="rank silver">2</span> --- <span class="right green">---</span></li>
+                    <li><span class="rank bronze">3</span> --- <span class="right yellow">---</span></li>
+                </ol>
+
+                <div class="score-expl">
+                    <h4>Sådan beregnes score</h4>
+                    <ul>
+                        <li>Lav CO₂-udledning</li>
+                        <li>Lav hastighed</li>
+                        <li>Flere gennemførte målinger</li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+<script>
+const links = document.querySelectorAll(".menu-item");
+const currentPage = window.location.pathname.split("/").pop();
+
+links.forEach(link => {
+    if (link.getAttribute("href") === currentPage) {
+        link.classList.add("active");
+    }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <title>Ny Måling</title>
+    <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+
+<div class="measurement-container">
+    <div class="measurement-card">
+
+        <div class="header-row">
+            <div class="icon-circle">👤</div>
+            <div>
+                <h1>Start en ny måling</h1>
+                <p>Udfyld oplysningerne og gør klar til at måle</p>
+            </div>
+        </div>
+
+        <!-- Indtast kode -->
+        <label>Indtast kode</label>
+        <input type="text" placeholder="Indtast Kode">
+
+        <!-- Biltype -->
+        <label>Biltype</label>
+        <select>
+            <option>Vælg biltype</option>
+            <option>Benzin - lille</option>
+            <option>Benzin - stor</option>
+            <option>Diesel</option>
+        </select>
+
+        <!-- Vejtype -->
+        <label>Vejtype (Hastighedsgrænse)</label>
+        <select>
+            <option>Vælg vejtype</option>
+            <option>Byzone (50 km/t)</option>
+            <option>Landevej (80 km/t)</option>
+            <option>Motorvej (130 km/t)</option>
+        </select>
+
+        <!-- Start knap -->
+        <button class="start-measure-btn" onclick="goToSession()">
+            ▶ Start måling
+        </button>
+
+        <div class="info-text">
+            Du kan ikke starte før alle felter er udfyldt
+        </div>
+
+    </div>
+</div>
+
+<script>
+function goToSession() {
+    window.location.href = "session.html";
+}
+</script>
+
+</body>
+</html>
