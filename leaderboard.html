@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="da">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leaderboard - Underviser</title>
+
     <link rel="stylesheet" href="underviser.css">
 </head>
 
-<body>
+<body onload="protectTeacherPage(); loadTeacherLeaderboard();">
 
 <div class="layout">
 
-
+    <!-- SIDEBAR -->
     <aside class="sidebar">
 
         <div class="sidebar-title">
@@ -19,7 +21,8 @@
             <h2>Fartmåler</h2>
         </div>
 
-         <nav class="sidebar-menu">
+        <nav class="sidebar-menu">
+
             <a href="overblik.html" class="menu-item">
                 <span>🏠</span> Overblik
             </a>
@@ -39,95 +42,156 @@
             <a href="indstillinger.html" class="menu-item">
                 <span>⚙️</span> Indstillinger
             </a>
+
         </nav>
 
     </aside>
 
 
-  
+    <!-- MAIN -->
     <main class="content">
 
-
+        <!-- HEADER -->
         <header class="topbar">
+
             <div>
+
                 <h1>Leaderboard</h1>
-                <p>Se hvilke skoler, grupper og elever der udleder mindst CO₂.</p>
+
+                <p>
+                    Sammenlign grupper og skoler på præcision, CO₂ og score.
+                </p>
+
             </div>
 
             <div class="topbar-actions">
 
                 <div class="user-box">
-                    <button class="logout-btn global-logout">Log ud →</button>
+
+                    <button
+                        type="button"
+                        class="logout-btn global-logout"
+                        onclick="logout()">
+
+                        Log ud →
+
+                    </button>
+
                 </div>
+
             </div>
+
         </header>
 
 
-       
-        <div class="leader-tabs">
-            <button class="leader-tab active">Skoler</button>
-            <button class="leader-tab">Grupper</button>
+        <!-- Error message -->
+        <div
+            id="errorBox"
+            class="error-box"
+            style="display: none;">
         </div>
 
 
-       
+        <!-- LEADERBOARD TYPE TABS -->
+        <div class="leader-tabs">
+
+            <button
+                type="button"
+                id="schoolLeaderboardTab"
+                class="leader-tab active"
+                onclick="changeLeaderboardType('schools')">
+
+                Skoler
+
+            </button>
+
+            <button
+                type="button"
+                id="classLeaderboardTab"
+                class="leader-tab"
+                onclick="changeLeaderboardType('classes')">
+
+                Grupper
+
+            </button>
+
+        </div>
+
+
+        <!-- ROAD TYPE TABS -->
+        <div class="leader-tabs">
+
+            <button
+                type="button"
+                id="byzoneTab"
+                class="leader-tab active"
+                onclick="changeLeaderboardRoadType('Byzone')">
+
+                Byzone 50
+
+            </button>
+
+            <button
+                type="button"
+                id="landevejTab"
+                class="leader-tab"
+                onclick="changeLeaderboardRoadType('Landevej')">
+
+                Landevej 80
+
+            </button>
+
+            <button
+                type="button"
+                id="motorvejTab"
+                class="leader-tab"
+                onclick="changeLeaderboardRoadType('Motorvej')">
+
+                Motorvej 130
+
+            </button>
+
+        </div>
+
+
+        <!-- GRID -->
         <section class="leaderboard-grid">
 
-            <!-- LEFT TABLE -->
+            <!-- TABLE -->
             <div class="card leader-table">
 
                 <table>
+
                     <thead>
+
                         <tr>
+
                             <th>Placering</th>
-                            <th>Skole</th>
+                            <th>Navn</th>
                             <th>Gns. CO₂</th>
-                            <th>Gns. hastighed</th>
                             <th>Antal målinger</th>
                             <th>Score</th>
+
                         </tr>
+
                     </thead>
 
-                    <tbody>
-
-                        
-                        <tr>
-                            <td><span class="rank gold">1</span></td>
-                            <td>---</td>
-                            <td>--- g</td>
-                            <td>--- km/t</td>
-                            <td>---</td>
-                            <td class="green">---</td>
-                        </tr>
+                    <tbody id="leaderboardBody">
 
                         <tr>
-                            <td><span class="rank silver">2</span></td>
-                            <td>---</td>
-                            <td>--- g</td>
-                            <td>--- km/t</td>
-                            <td>---</td>
-                            <td class="green">---</td>
-                        </tr>
 
-                        <tr>
-                            <td><span class="rank bronze">3</span></td>
-                            <td>---</td>
-                            <td>--- g</td>
-                            <td>--- km/t</td>
-                            <td>---</td>
-                            <td class="yellow">---</td>
-                        </tr>
+                            <td colspan="5">
+                                Indlæser leaderboard...
+                            </td>
 
-                        
-                        <tr><td>4</td><td>---</td><td>---</td><td>---</td><td>---</td><td class="yellow">---</td></tr>
-                        <tr><td>5</td><td>---</td><td>---</td><td>---</td><td>---</td><td class="orange">---</td></tr>
-                        <tr><td>6</td><td>---</td><td>---</td><td>---</td><td>---</td><td class="red">---</td></tr>
+                        </tr>
 
                     </tbody>
+
                 </table>
 
                 <p class="table-note">
-                    Score er beregnet ud fra både CO₂-udledning og hastighed.
+                    Laveste score vinder. Score bygger på afvigelse fra fartgrænsen og CO₂.
                 </p>
 
             </div>
@@ -139,31 +203,65 @@
                 <h3>Din skole</h3>
 
                 <div class="school-box">
-                    <div class="school-icon">🏫</div>
+
+                    <div class="school-icon">
+                        🏫
+                    </div>
 
                     <div>
-                        <strong>---</strong>
-                        <p>Din placering</p>
-                        <h2>--- / ---</h2>
-                        <p class="green">Score: ---</p>
+
+                        <strong id="ownSchoolName">
+                            Køge Skole
+                        </strong>
+
+                        <p>
+                            Din placering
+                        </p>
+
+                        <h2 id="ownSchoolRank">
+                            ---
+                        </h2>
+
+                        <p class="green" id="ownSchoolScore">
+                            Score opdateres når leaderboard hentes
+                        </p>
+
                     </div>
+
                 </div>
 
-                <h4>Top 3 skoler</h4>
 
-                <ol class="top-three">
-                    <li><span class="rank gold">1</span> --- <span class="right green">---</span></li>
-                    <li><span class="rank silver">2</span> --- <span class="right green">---</span></li>
-                    <li><span class="rank bronze">3</span> --- <span class="right yellow">---</span></li>
+                <h4>Top 3</h4>
+
+                <ol class="top-three" id="topThreeList">
+
+                    <li>
+                        Indlæser top 3...
+                    </li>
+
                 </ol>
 
+
                 <div class="score-expl">
+
                     <h4>Sådan beregnes score</h4>
+
                     <ul>
-                        <li>Lav CO₂-udledning</li>
-                        <li>Lav hastighed</li>
-                        <li>Flere gennemførte målinger</li>
+
+                        <li>
+                            Præcis hastighed tæt på fartgrænsen
+                        </li>
+
+                        <li>
+                            Lav CO₂-udledning
+                        </li>
+
+                        <li>
+                            Bedste afsluttede session tæller
+                        </li>
+
                     </ul>
+
                 </div>
 
             </div>
@@ -173,15 +271,38 @@
     </main>
 
 </div>
-<script>
-const links = document.querySelectorAll(".menu-item");
-const currentPage = window.location.pathname.split("/").pop();
 
-links.forEach(link => {
+
+<!-- Active menu -->
+<script>
+
+const links =
+    document.querySelectorAll(".menu-item");
+
+const currentPage =
+    window.location.pathname.split("/").pop();
+
+for (let index = 0; index < links.length; index++) {
+
+    const link =
+        links[index];
+
     if (link.getAttribute("href") === currentPage) {
+
         link.classList.add("active");
     }
-});
+}
+
 </script>
+
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<script src="api.js"></script>
+
+<script src="underviser.js"></script>
+
 </body>
+
 </html>
