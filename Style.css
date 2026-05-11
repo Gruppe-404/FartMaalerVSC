@@ -300,7 +300,6 @@ button {
   margin: 0 auto;
 }
 
-/* Topbar */
 
 .topbar {
   display: flex;
@@ -395,7 +394,7 @@ button {
   font-size: 19px;
 }
 
-/* main layout */
+
 
 .content-grid {
   display: grid;
@@ -413,7 +412,6 @@ button {
   gap: 22px;
 }
 
-/* cards */
 
 .card {
   background: #ffffff;
@@ -536,7 +534,6 @@ button {
   line-height: 1.5;
 }
 
-/* session */
 
 .session-card h2 {
   text-align: center;
@@ -707,7 +704,6 @@ button {
   color: #e02424 !important;
 }
 
-/* co2 */
 
 .co2-card h2 {
   margin-bottom: 24px;
@@ -744,7 +740,6 @@ button {
   text-align: center;
 }
 
-/* feedback */
 
 .feedback-card h2 {
   margin-bottom: 18px;
@@ -801,7 +796,7 @@ button {
   line-height: 1.45;
 }
 
-/* settings */
+
 .settings-card h2 {
   margin-bottom: 24px;
 }
@@ -897,7 +892,7 @@ button {
   line-height: 1.45;
 }
 
-/* fun fact */
+
 .funfact-card {
   border-color: #f4ca46;
   background: #fff9e8;
@@ -1027,7 +1022,7 @@ button {
 }
 
 
-/* session: fun fact pop up */
+
 .funfact-toast {
   position: fixed;
   bottom: 30px;
@@ -1057,7 +1052,7 @@ button {
 }
 
 
-/* opsummering siden */
+/* opsummering side */
 .summary-page {
   max-width: 1800px;
   margin: 0 auto;
@@ -1076,7 +1071,7 @@ button {
   margin-bottom: 32px;
 }
 
-/* layout */
+
 .summary-layout {
   display: grid;
   grid-template-columns: 330px 1.5fr 500px;
@@ -1084,7 +1079,7 @@ button {
   align-items: flex-start;
 }
 
-/* filtre venstre */
+
 .summary-filters {
   padding: 30px !important;
 }
@@ -1136,7 +1131,7 @@ button {
   color: #999;
 }
 
-/* filtre: knapper */
+
 .filter-apply {
   width: 100%;
   padding: 14px;
@@ -1159,7 +1154,6 @@ button {
   border: 1px solid #cfcfcf;
 }
 
-/* session tabel - midten */
 
 .summary-sessions {
   padding: 32px !important;
@@ -1190,7 +1184,7 @@ button {
   font-size: 17px;
 }
 
-/* score tags*/
+
 .score-tag {
   padding: 6px 12px;
   font-size: 15px;
@@ -1203,7 +1197,7 @@ button {
 .score-tag.orange { background: #ffe4cf; color: #b14d00; }
 .score-tag.red { background: #ffd6d6; color: #b30000; }
 
-/* detalje knap */
+
 .details-btn {
   font-size: 22px;
   border: none;
@@ -1217,7 +1211,7 @@ button {
   color: #777;
 }
 
-/* graf (højre side)*/
+
 .summary-chart {
   padding: 32px !important;
 }
