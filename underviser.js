@@ -633,7 +633,7 @@ async function loadSessions() {
         if (sessions.length === 0) {
 
             sessionsTableBody.innerHTML =
-                "<tr><td colspan='7'>Ingen sessions endnu</td></tr>";
+                "<tr><td colspan='8'>Ingen sessions endnu</td></tr>";
 
             setText(
                 "sessionCountText",
@@ -648,6 +648,20 @@ async function loadSessions() {
             const session =
                 sessions[index];
 
+            let endButton =
+                "";
+
+            if (session.status === "Ended") {
+
+                endButton =
+                    "<span class='status green'>Afsluttet</span>";
+            }
+            else {
+
+                endButton =
+                    "<button type='button' class='edit-btn' onclick='endSession(" + session.id + ")'>Afslut</button>";
+            }
+
             sessionsTableBody.innerHTML +=
                 "<tr>" +
                     "<td>Gruppe " + getValue(session.groupId) + "</td>" +
@@ -656,6 +670,7 @@ async function loadSessions() {
                     "<td>" + getValue(session.speedLimit) + " km/t</td>" +
                     "<td>" + getValue(session.status) + "</td>" +
                     "<td>" + formatDateTime(session.createdAt) + "</td>" +
+                    "<td>" + endButton + "</td>" +
                     "<td><button type='button' class='delete-btn-sm' onclick='deleteSession(" + session.id + ")'>Slet</button></td>" +
                 "</tr>";
         }
@@ -671,7 +686,50 @@ async function loadSessions() {
         console.log(error);
 
         sessionsTableBody.innerHTML =
-            "<tr><td colspan='7'>Kunne ikke hente sessions</td></tr>";
+            "<tr><td colspan='8'>Kunne ikke hente sessions</td></tr>";
+    }
+}
+
+
+// End session - US14
+async function endSession(id) {
+
+    clearError();
+
+    const confirmed =
+        confirm("Er du sikker på, at du vil afslutte denne session?");
+
+    if (confirmed === false) {
+        return;
+    }
+
+    try {
+
+        const token =
+            localStorage.getItem("token");
+
+        await axios.put(
+            apiUrl + "/Sessions/" + id + "/end",
+            {},
+            {
+                headers:
+                {
+                    Authorization: "Bearer " + token
+                }
+            }
+        );
+
+        loadSessions();
+        loadOverview();
+    }
+
+    catch(error) {
+
+        console.log(error);
+
+        showError(
+            "Kunne ikke afslutte session"
+        );
     }
 }
 
@@ -724,7 +782,7 @@ async function deleteAllHistory() {
     try {
 
         await axios.delete(
-            apiUrl + "/Sessions"
+            apiUrl + "/Sessions/all"
         );
 
         loadSessions();

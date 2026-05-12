@@ -1,7 +1,6 @@
 // This file contains shared API settings and helper methods.
 
-const apiUrl =
-    "https://fartmaalerapi20260511134506-fnarawbzewapckck.switzerlandnorth-01.azurewebsites.net/api";
+const apiUrl = "https://fartmaalerapi20260511134506-fnarawbzewapckck.switzerlandnorth-01.azurewebsites.net/api";
 
 // Saves teacher token after login.
 function saveToken(token) {
