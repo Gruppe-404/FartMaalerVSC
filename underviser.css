@@ -1119,3 +1119,164 @@ td[colspan] {
     }
 }
 }
+
+
+
+/* klasse overblik */
+.groups-overview-card {
+  margin-top: 20px;
+}
+
+.groups-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.groups-header h3 {
+  font-size: 18px;
+}
+
+.groups-header a {
+  font-size: 14px;
+  color: #2e7d32;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.groups-header a:hover {
+  text-decoration: underline;
+}
+
+.groups-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.groups-table th {
+  text-align: left;
+  font-size: 14px;
+  color: #666;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.groups-table td {
+  padding: 12px 0;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 15px;
+  color: #333;
+}
+
+.score.green {
+  color: #2e7d32;
+  font-weight: 600;
+}
+
+.score.orange {
+  color: #f9a825;
+  font-weight: 600;
+}
+
+.score.red {
+  color: #c62828;
+  font-weight: 600;
+}
+
+.trend.green {
+  color: #2e7d32;
+  font-weight: 600;
+}
+
+.groups-footer {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #777;
+}
+
+
+
+/* popup */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  width: 300px;
+  text-align: center;
+}
+
+/* status */
+.status.green {
+  color: #2e7d32;
+  font-weight: 600;
+}
+
+/* knapper */
+.group-table button {
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.end-btn {
+    background: #f59e0b;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    margin-left: 6px;
+}
+
+.group-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed; /* 🔥 vigtig */
+}
+
+.group-table th,
+.group-table td {
+    text-align: left;
+    padding: 14px 16px;
+}
+
+/* Kolonne bredder (det er DET der fixer det) */
+.group-table th:nth-child(1),
+.group-table td:nth-child(1) {
+    width: 60px;
+}
+
+.group-table th:nth-child(2),
+.group-table td:nth-child(2) {
+    width: 180px;
+}
+
+.group-table th:nth-child(3),
+.group-table td:nth-child(3) {
+    width: 180px;
+}
+
+.group-table th:nth-child(4),
+.group-table td:nth-child(4) {
+    width: 120px;
+}
+
+.group-table th:nth-child(5),
+.group-table td:nth-child(5) {
+    width: 100px;
+}
+
+.group-table th:nth-child(6),
+.group-table td:nth-child(6) {
+    width: 260px;
+}
+
+

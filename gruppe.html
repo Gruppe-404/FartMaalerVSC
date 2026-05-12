@@ -47,7 +47,6 @@
 
     </aside>
 
-
     <!-- MAIN CONTENT -->
     <main class="content">
 
@@ -55,178 +54,144 @@
         <header class="topbar">
 
             <div class="welcome-text">
-
-                <h1>
-                    Administrer grupper
-                </h1>
-
-                <p>
-                    Opret, rediger og slet grupper til undervisningen.
-                </p>
-
+                <h1>Administrer grupper</h1>
+                <p>Opret, rediger og slet grupper til undervisningen.</p>
             </div>
 
-            <div class="topbar-actions">
-
-                <div class="user-box">
-
-                    <div class="user-info">
-                        <strong>Underviser</strong>
-                        <span>Admin</span>
-                    </div>
-
-                    <button
-                        type="button"
-                        class="logout-btn global-logout"
-                        onclick="logout()">
-
-                        Log ud →
-
-                    </button>
-
-                </div>
-
-            </div>
+            <button class="logout-btn" onclick="logout()">
+                Log ud →
+            </button>
 
         </header>
 
-
-        <!-- ERROR MESSAGE -->
-        <div
-            id="errorBox"
-            class="error-box"
-            style="display: none;">
-        </div>
+        <!-- ERROR -->
+        <div id="errorBox" class="error-box" style="display:none;"></div>
 
 
-        <!-- GROUP MANAGEMENT CARD -->
-        <section class="card group-card">
+        <!-- 🔹 REGISTREREDE GRUPPER -->
+        <section class="card">
 
-            <!-- CREATE GROUP -->
-            <div class="group-create">
+            <h3>Registrerede grupper</h3>
 
-                <h3>
-                    Opret en gruppe
-                </h3>
+            <table class="group-table">
 
-                <p>
-                    Gruppenavnet skal være unikt.
-                </p>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Navn</th>
+                        <th>Skole</th>
+                        <th>Status</th>
+                        <th>Sessions</th>
+                        <th>Handlinger</th>
+                    </tr>
+                </thead>
 
-                <div class="group-create-row">
+                <tbody id="groupTableBody">
 
-                    <input
-                        type="text"
-                        id="groupNameInput"
-                        placeholder="Gruppenavn">
+                    <!-- DATA FRA JS -->
+                    <tr>
+                        <td colspan="6">Indlæser grupper...</td>
+                    </tr>
 
-                    <input
-                        type="text"
-                        id="schoolNameInput"
-                        placeholder="Skolenavn">
+                </tbody>
 
-                    <button
-                        type="button"
-                        class="save-btn"
-                        onclick="createGroup()">
+            </table>
 
-                        Opret
-
-                    </button>
-
-                </div>
-
-            </div>
-
-            <hr class="divider">
+        </section>
 
 
-            <!-- GROUP LIST -->
-            <div class="group-list">
+        <!-- 🔹 OPRET GRUPPE -->
+        <section class="card">
 
-                <h3>
-                    Alle grupper
-                </h3>
+            <h3>Opret ny gruppe</h3>
 
-                <table class="group-table">
+            <div class="group-create-row">
 
-                    <thead>
+                <input
+                    type="text"
+                    id="groupNameInput"
+                    placeholder="fx Gruppe 5">
 
-                        <tr>
+                <button
+                    type="button"
+                    class="save-btn"
+                    onclick="createGroup()">
 
-                            <th>
-                                ID
-                            </th>
-
-                            <th>
-                                Gruppenavn
-                            </th>
-
-                            <th>
-                                Skole
-                            </th>
-
-                            <th style="text-align:right;">
-                                Handlinger
-                            </th>
-
-                        </tr>
-
-                    </thead>
-
-                    <tbody id="groupTableBody">
-
-                        <tr>
-                            <td colspan="4">
-                                Indlæser grupper...
-                            </td>
-                        </tr>
-
-                    </tbody>
-
-                </table>
+                    Opret
+                </button>
 
             </div>
 
         </section>
 
     </main>
-
 </div>
 
 
-<!-- Active menu -->
+<!-- 🔹 DELETE POPUP -->
+<div id="deleteModal" class="modal">
+    <div class="modal-content">
+
+        <h3>Slet gruppe</h3>
+        <p>Er du sikker på at du vil slette denne gruppe?</p>
+
+        <div class="modal-actions">
+            <button class="danger-btn" onclick="confirmDelete()">
+                Ja, slet
+            </button>
+
+            <button onclick="closeModal()">
+                Annuller
+            </button>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- 🔹 EDIT POPUP -->
+<div id="editModal" class="modal">
+    <div class="modal-content">
+
+        <h3>Rediger gruppe</h3>
+
+        <input type="text" id="editGroupName">
+
+        <div class="modal-actions">
+            <button class="save-btn" onclick="saveEdit()">
+                Gem
+            </button>
+
+            <button onclick="closeModal()">
+                Annuller
+            </button>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- 🔹 ACTIVE MENU -->
 <script>
+const links = document.querySelectorAll(".menu-item");
+const currentPage = window.location.pathname.split("/").pop();
 
-const links =
-    document.querySelectorAll(".menu-item");
-
-const currentPage =
-    window.location.pathname.split("/").pop();
-
-for (let index = 0; index < links.length; index++) {
-
-    const link =
-        links[index];
-
-    if (link.getAttribute("href") === currentPage) {
-
-        link.classList.add("active");
+for (let i = 0; i < links.length; i++) {
+    if (links[i].getAttribute("href") === currentPage) {
+        links[i].classList.add("active");
     }
 }
-
 </script>
 
 
-<!-- Axios -->
+<!-- 🔹 AXIOS -->
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-<!-- Shared API -->
+<!-- 🔹 API -->
 <script src="api.js"></script>
 
-<!-- Teacher logic -->
+<!-- 🔹 LOGIC -->
 <script src="underviser.js"></script>
 
 </body>
-
 </html>
