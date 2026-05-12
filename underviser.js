@@ -110,7 +110,7 @@ async function loadGroups() {
         if (groups.length === 0) {
 
             groupTableBody.innerHTML =
-                "<tr><td colspan='4'>Ingen grupper endnu</td></tr>";
+                "<tr><td colspan='6'>Ingen grupper endnu</td></tr>";
 
             return;
         }
@@ -121,15 +121,23 @@ async function loadGroups() {
                 groups[index];
 
             groupTableBody.innerHTML +=
-                "<tr>" +
-                    "<td>" + getValue(group.id) + "</td>" +
-                    "<td>" + getValue(group.name) + "</td>" +
-                    "<td>" + getValue(group.school) + "</td>" +
-                    "<td class='actions' style='text-align:right;'>" +
-                        "<button type='button' class='edit-btn' onclick='editGroup(" + group.id + ")'>Rediger</button>" +
-                        "<button type='button' class='delete-btn-sm' onclick='deleteGroup(" + group.id + ")'>Slet</button>" +
-                    "</td>" +
-                "</tr>";
+             "<tr>" +
+
+             "<td>" + getValue(group.id) + "</td>" +
+             "<td>" + getValue(group.name) + "</td>" +
+             "<td>" + getValue(group.school) + "</td>" +
+
+             "<td><span class='status active'>Aktiv</span></td>" +
+             
+             "<td>" + (group.sessions ?? 0) + "</td>" +
+
+        "<td class='actions'>" +
+            "<button class='edit-btn' onclick='editGroup(" + group.id + ")'>Rediger</button>" +
+            "<button class='delete-btn-sm' onclick='deleteGroup(" + group.id + ")'>Slet</button>" +
+            "<button class='end-btn' onclick='endSession(" + group.id + ")'>Afslut</button>" +
+        "</td>" +
+
+    "</tr>";
         }
     }
 
@@ -717,27 +725,36 @@ async function deleteAllHistory() {
     const confirmed =
         confirm("Er du sikker på, at du vil slette al historik?");
 
-    if (confirmed === false) {
-        return;
-    }
+    if (!confirmed) return;
 
     try {
 
-        await axios.delete(
-            apiUrl + "/Sessions"
-        );
+        const response =
+            await axios.get(apiUrl + "/Sessions");
+
+        const sessions =
+            response.data;
+
+        if (sessions.length === 0) {
+            return;
+        }
+
+        for (let i = 0; i < sessions.length; i++) {
+
+            await axios.delete(
+                apiUrl + "/Sessions/" + sessions[i].id
+            );
+        }
 
         loadSessions();
         loadOverview();
     }
 
-    catch(error) {
+    catch (error) {
 
         console.log(error);
 
-        showError(
-            "Kunne ikke slette al historik. Tjek om backend har endpoint til dette."
-        );
+        showError("Kunne ikke slette alle sessions");
     }
 }
 
@@ -1165,3 +1182,16 @@ window.addEventListener("load", function() {
         });
     }
 });
+
+
+function endSession(groupId) {
+
+    const confirmed =
+        confirm("Er du sikker på at afslutte sessionen for denne gruppe?");
+
+    if (confirmed === false) {
+        return;
+    }
+
+    console.log("Afslutter session for gruppe:", groupId);
+}
