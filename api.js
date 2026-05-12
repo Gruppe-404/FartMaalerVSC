@@ -41,7 +41,7 @@ function logout() {
     );
 
     window.location.href =
-        "teacher-login.html";
+        "index.html";
 }
 
 // Protects teacher pages from being opened without login.
