@@ -36,8 +36,8 @@
                 <span>🏆</span> Leaderboard
             </a>
 
-            <a href="sessions.html" class="menu-item">
-                <span>📊</span> Sessions
+            <a href="sessions.html" class="menu-item active">
+                <span>📊</span> Sessioner
             </a>
 
             <a href="indstillinger.html" class="menu-item">
@@ -52,101 +52,112 @@
     <!-- CONTENT -->
     <main class="content">
 
-        <!-- HEADER -->
-        <div class="session-header">
+        <!-- 🔥 HEADER -->
+        <header class="topbar back-header">
 
-            <button class="back-btn" onclick="window.location.href='sessions.html'">
+            <div class="back-link" onclick="window.location.href='sessions.html'">
                 ← Alle sessions
-            </button>
+            </div>
 
-            <h2>Session #1 — Gruppe 1</h2>
+            <h1>Session #1 — Gruppe 1</h1>
 
             <button class="danger-btn">
                 Slet hele session
             </button>
 
+        </header>
+
+        <!-- 🔥 INFO CARDS -->
+        <div class="info-grid">
+
+            <div class="info-card">
+                <span>Gruppe</span>
+                <strong>Gruppe 1</strong>
+            </div>
+
+            <div class="info-card">
+                <span>Biltype</span>
+                <strong>Benzin lille</strong>
+            </div>
+
+            <div class="info-card">
+                <span>Vejtype</span>
+                <strong>Byzone 50</strong>
+            </div>
+
+            <div class="info-card">
+                <span>Status</span>
+                <strong class="status-done">Afsluttet</strong>
+            </div>
+
+            <div class="info-card">
+                <span>Score</span>
+                <strong>5.6</strong>
+            </div>
+
         </div>
 
-        <!-- INFO BOXES -->
-        <div class="kpi-row">
-
-            <div class="kpi-card">
-                <p>Gruppe</p>
-                <h3>Gruppe 1</h3>
-            </div>
-
-            <div class="kpi-card">
-                <p>Biltype</p>
-                <h3>Benzin lille</h3>
-            </div>
-
-            <div class="kpi-card">
-                <p>Vejtype</p>
-                <h3>Byzone 50</h3>
-            </div>
-
-            <div class="kpi-card">
-                <p>Status</p>
-                <h3>Afsluttet</h3>
-            </div>
-
-            <div class="kpi-card">
-                <p>Score</p>
-                <h3>5.6</h3>
-            </div>
-
-        </div>
-
-        <!-- MÅLINGER -->
+        <!-- 🔥 MÅLINGER -->
         <section class="card">
 
-            <div class="group-header">
+            <div class="card-header">
                 <h3>Målinger</h3>
-                <button class="danger-btn">Slet valgte</button>
+
+                <button class="danger-btn">
+                    Slet valgte
+                </button>
             </div>
 
-            <table class="measurement-table">
+            <div class="table-wrapper">
 
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>#</th>
-                        <th>Hastighed</th>
-                        <th>Tid</th>
-                        <th>CO₂</th>
-                        <th>Status</th>
-                        <th>Tidspunkt</th>
-                        <th></th>
-                    </tr>
-                </thead>
+                <table class="session-table">
 
-                <tbody>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>#</th>
+                            <th>Hastighed</th>
+                            <th>Tid</th>
+                            <th>CO₂</th>
+                            <th>Status</th>
+                            <th>Tidspunkt</th>
+                            <th></th>
+                        </tr>
+                    </thead>
 
-                    <tr>
-                        <td><input type="checkbox"></td>
-                        <td>1</td>
-                        <td>47 km/t</td>
-                        <td>1.06s</td>
-                        <td>5.6g</td>
-                        <td class="green">Under</td>
-                        <td>14:30</td>
-                        <td><button class="delete-btn-sm">🗑</button></td>
-                    </tr>
+                    <tbody>
 
-                    <tr>
-                        <td><input type="checkbox"></td>
-                        <td>2</td>
-                        <td>55 km/t</td>
-                        <td>0.91s</td>
-                        <td>6.6g</td>
-                        <td class="red">Over</td>
-                        <td>14:31</td>
-                        <td><button class="delete-btn-sm">🗑</button></td>
-                    </tr>
+                        <tr class="click-row">
+                            <td><input type="checkbox"></td>
+                            <td>1</td>
+                            <td>47 km/t</td>
+                            <td>1.06s</td>
+                            <td>5.6g</td>
+                            <td class="status-active">Under</td>
+                            <td>14:30</td>
+                            <td>
+                                <button class="delete-btn-sm">🗑</button>
+                            </td>
+                        </tr>
 
-                </tbody>
+                        <tr class="click-row">
+                            <td><input type="checkbox"></td>
+                            <td>2</td>
+                            <td>55 km/t</td>
+                            <td>0.91s</td>
+                            <td>6.6g</td>
+                            <td class="status-over">Over</td>
+                            <td>14:31</td>
+                            <td>
+                                <button class="delete-btn-sm">🗑</button>
+                            </td>
+                        </tr>
 
-            </table>
+                    </tbody>
+
+                </table>
+
+            </div>
 
         </section>
 

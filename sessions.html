@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="underviser.css">
 </head>
 
-<body>
+<body onload="loadSessions()">
 
 <div class="layout">
 
@@ -36,8 +36,8 @@
                 <span>🏆</span> Leaderboard
             </a>
 
-            <a href="sessions.html" class="menu-item">
-                <span>📊</span> Sessions
+            <a href="sessions.html" class="menu-item active">
+                <span>📊</span> Sessioner
             </a>
 
             <a href="indstillinger.html" class="menu-item">
@@ -52,6 +52,7 @@
     <!-- CONTENT -->
     <main class="content">
 
+        <!-- HEADER -->
         <header class="topbar">
             <h1>Alle sessions</h1>
         </header>
@@ -59,57 +60,76 @@
         <!-- SESSIONS LIST -->
         <section class="card">
 
-            <div class="group-header">
+            <div class="card-header">
                 <h3>Aktive og afsluttede sessions</h3>
-                <button class="danger-btn">Slet al historik</button>
+
+                <button class="danger-btn" onclick="deleteAllHistory()">
+                    Slet al historik
+                </button>
             </div>
 
-            <table class="session-table">
+            <div class="table-wrapper">
 
-                <thead>
-                    <tr>
-                        <th>Gruppe</th>
-                        <th>Biltype</th>
-                        <th>Vejtype</th>
-                        <th>Fartgrænse</th>
-                        <th>Status</th>
-                        <th>Oprettet</th>
-                        <th></th>
-                    </tr>
-                </thead>
+                <table class="session-table">
 
-                <tbody>
+                    <thead>
+                        <tr>
+                            <th>Gruppe</th>
+                            <th>Biltype</th>
+                            <th>Vejtype</th>
+                            <th>Fartgrænse</th>
+                            <th>Status</th>
+                            <th>Oprettet</th>
+                            <th></th>
+                        </tr>
+                    </thead>
 
-                    <!-- klikbar række -->
-                    <tr onclick="window.location.href='sessions-detail.html'" class="click-row">
-                        <td>Gruppe ...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td class="green">...</td>
-                        <td>1...</td>
-                        <td><button class="delete-btn-sm">Slet</button></td>
-                    </tr>
+                    <tbody id="sessionsTableBody">
+                        <tr>
+                            <td colspan="7" class="loading-text">
+                                Indlæser sessions...
+                            </td>
+                        </tr>
+                    </tbody>
 
-                    <tr onclick="window.location.href='sessions-detail.html'" class="click-row">
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td class="gray">...</td>
-                        <td>...</td>
-                        <td><button class="delete-btn-sm">Slet</button></td>
-                    </tr>
+                </table>
 
-                </tbody>
-
-            </table>
+            </div>
 
         </section>
 
     </main>
 
 </div>
+
+<!-- 🔥 CUSTOM MODAL -->
+<div id="customModal" class="modal-overlay">
+
+    <div class="modal-box">
+
+        <h2 id="modalTitle">Titel</h2>
+        <p id="modalMessage">Tekst</p>
+
+        <div class="modal-actions">
+
+            <button onclick="closeModal()" class="btn-secondary">
+                Annuller
+            </button>
+
+            <button id="modalConfirmBtn" class="btn-danger">
+                OK
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- SCRIPTS -->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="api.js"></script>
+<script src="underviser.js"></script>
 
 </body>
 </html>

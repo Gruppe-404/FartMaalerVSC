@@ -1336,3 +1336,274 @@ td[colspan] {
     border-radius: 8px;
     cursor: pointer;
 }
+
+/* CARD HEADER */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+/* TABLE WRAPPER */
+.table-wrapper {
+    overflow-x: auto;
+}
+
+/* TABLE */
+.session-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* HEAD */
+.session-table thead {
+    background: #f8f9fb;
+}
+
+.session-table th {
+    text-align: left;
+    padding: 14px;
+    font-size: 14px;
+    color: #6b7280;
+}
+
+/* ROWS */
+.session-table td {
+    padding: 14px;
+    border-top: 1px solid #eee;
+    font-size: 14px;
+}
+
+/* HOVER */
+.session-table tbody tr:hover {
+    background: #f9fafb;
+    cursor: pointer;
+}
+
+/* STATUS BADGE */
+.status-active {
+    color: #16a34a;
+    font-weight: 600;
+}
+
+.status-done {
+    color: #6b7280;
+}
+
+/* DELETE BUTTON SMALL */
+.delete-btn-sm {
+    background: #fee2e2;
+    color: #dc2626;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.delete-btn-sm:hover {
+    background: #fecaca;
+}
+
+/* LOADING TEXT */
+.loading-text {
+    text-align: center;
+    color: #9ca3af;
+    padding: 20px;
+}
+
+
+
+/* GRID */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+/* CARD */
+.info-card {
+    background: white;
+    padding: 16px;
+    border-radius: 14px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.info-card span {
+    font-size: 13px;
+    color: #6b7280;
+}
+
+.info-card strong {
+    display: block;
+    margin-top: 5px;
+    font-size: 16px;
+}
+
+/* STATUS */
+.status-active {
+    color: #16a34a;
+    font-weight: 600;
+}
+
+.status-done {
+    color: #6b7280;
+}
+
+.status-over {
+    color: #dc2626;
+    font-weight: 600;
+}
+
+/* BACK HEADER */
+.back-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.back-link {
+    cursor: pointer;
+    color: #6b7280;
+}
+
+
+
+
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background: rgba(0,0,0,0.4);
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 999;
+}
+
+.modal-overlay.show {
+    display: flex;
+}
+
+.modal-box {
+    background: white;
+    padding: 25px 30px;
+    border-radius: 16px;
+
+    width: 320px;
+    text-align: center;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.modal-box h2 {
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.modal-box p {
+    color: #666;
+    font-size: 14px;
+}
+
+.modal-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* 🔥 KNAPPER */
+.btn-secondary {
+    background: #eee;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.btn-danger {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.btn-danger:hover {
+    background: #c0392b;
+}
+
+
+
+
+
+
+/* MODAL DESIGN */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0,0,0,0.5);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.2s;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.modal-box {
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    width: 350px;
+    text-align: center;
+}
+
+.modal-box input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.modal-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-secondary {
+    background: #e0e0e0;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+}
+
+.btn-danger {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+}
