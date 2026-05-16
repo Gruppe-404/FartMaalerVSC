@@ -58,14 +58,12 @@ button {
 
 .login button,
 .teacher-login-btn {
-    background-color: #2e7d32;
+    margin-top: 20px;
+    padding: 14px 24px;
+    background: #2e7d32;
     color: white;
     border: none;
-    padding: 10px 18px;
-    border-radius: 8px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: 0.2s;
+    border-radius: 10px;
 }
 
 .hero {
@@ -99,7 +97,7 @@ button {
 .features {
     display: flex;
     gap: 20px;
-    padding: 0 40px 40px;
+    padding: 20px 40px 40px;
 }
 
 .card {
@@ -1036,6 +1034,7 @@ button {
     .features {
         flex-direction: column;
         padding: 0 20px 30px;
+        
     }
 
     .hero,
