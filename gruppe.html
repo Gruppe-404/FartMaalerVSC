@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="underviser.css">
 </head>
 
-<body onload="protectTeacherPage(); loadGroups();">
+<!-- 🔥 VIGTIG: fjernet protectTeacherPage -->
+<body onload="loadGroups()">
 
 <div class="layout">
 
@@ -61,10 +62,6 @@
                 <h1>Administrer grupper</h1>
                 <p>Opret, rediger og slet grupper til undervisningen.</p>
             </div>
-
-            <button class="logout-btn" onclick="logout()">
-                Log ud →
-            </button>
 
         </header>
 
@@ -125,7 +122,7 @@
     </main>
 </div>
 
-<!-- 🔥 DELETE MODAL (NY KORREKT) -->
+<!-- 🔥 DELETE MODAL -->
 <div id="deleteGroupModal" class="modal-overlay">
     <div class="modal-box">
 
@@ -145,7 +142,7 @@
     </div>
 </div>
 
-<!-- 🔥 EDIT MODAL (NY KORREKT) -->
+<!-- 🔥 EDIT MODAL -->
 <div id="editGroupModal" class="modal-overlay">
     <div class="modal-box">
 
@@ -167,22 +164,11 @@
     </div>
 </div>
 
-<!-- ACTIVE MENU -->
-<script>
-const links = document.querySelectorAll(".menu-item");
-const currentPage = window.location.pathname.split("/").pop();
 
-for (let i = 0; i < links.length; i++) {
-    if (links[i].getAttribute("href") === currentPage) {
-        links[i].classList.add("active");
-    }
-}
-</script>
-
-<!-- SCRIPTS -->
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="api.js"></script>
 <script src="underviser.js"></script>
+<script src="gruppe.js"></script>
 
 </body>
 </html>
