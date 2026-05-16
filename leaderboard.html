@@ -72,11 +72,16 @@
         <!-- ERROR -->
         <div id="errorBox" class="error-box" style="display:none;"></div>
 
-        <!-- FILTER -->
+  
         <div class="leader-tabs">
 
-            <button class="leader-tab active" onclick="loadSchoolLeaderboard()">
-                Skoler
+            <button class="leader-tab active" onclick="switchTab('school', this)">
+                 Skoler
+                </button>
+                
+                
+            <button class="leader-tab" onclick="switchTab('class', this)">
+                Klasse
             </button>
 
         </div>
@@ -116,7 +121,7 @@
                         </tr>
                     </thead>
 
-                    <!-- 🔥 FIX: korrekt id -->
+           
                     <tbody id="leaderboardTableBody">
                         <tr>
                             <td colspan="5">Indlæser leaderboard...</td>
@@ -131,7 +136,7 @@
 
             </div>
 
-            <!-- SIDE -->
+
             <div class="card leader-side">
 
                 <h3>Din skole</h3>
@@ -143,7 +148,7 @@
                     <div>
 
                         <strong id="ownSchoolName">
-                            Køge Skole
+                            Roskilde Skole
                         </strong>
 
                         <p>Din placering</p>
@@ -184,7 +189,7 @@
 
 </div>
 
-<!-- ACTIVE MENU -->
+
 <script>
 const links = document.querySelectorAll(".menu-item");
 const currentPage = window.location.pathname.split("/").pop();
@@ -196,7 +201,7 @@ for (let i = 0; i < links.length; i++) {
 }
 </script>
 
-<!-- 🔥 VIGTIGT: leaderboard.js -->
+
 <script src="leaderboard.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

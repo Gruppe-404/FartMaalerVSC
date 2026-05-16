@@ -37,7 +37,6 @@ const schoolLeaderboardData = [
     }
 ];
 
-
 function loadSchoolLeaderboard() {
 
     const tbody = document.getElementById("leaderboardTableBody");
@@ -98,5 +97,24 @@ function filterLeaderboard(type, value) {
 }
 
 
+function switchTab(tab, element) {
 
+    // 🔥 fjern active fra alle tabs
+    const tabs = document.querySelectorAll(".leader-tab");
 
+    for (let i = 0; i < tabs.length; i++) {
+        tabs[i].classList.remove("active");
+    }
+
+    // 🔥 giv active til den klikkede
+    element.classList.add("active");
+
+    // 🔥 load data
+    if (tab === "school") {
+        loadSchoolLeaderboard();
+    }
+
+    if (tab === "class") {
+        loadClassLeaderboard();
+    }
+}
