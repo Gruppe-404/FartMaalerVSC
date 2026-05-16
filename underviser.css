@@ -1607,3 +1607,18 @@ td[colspan] {
     padding: 10px 16px;
     border-radius: 8px;
 }
+
+
+.filter-btn {
+    background: #eee;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.filter-btn.active {
+    background: #cfe8d6;
+    color: #1b5e20;
+    font-weight: 600;
+}

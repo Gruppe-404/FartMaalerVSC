@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="underviser.css">
 </head>
 
-<body onload="protectTeacherPage(); loadTeacherLeaderboard();">
+<!-- 🔥 FIX: load din mock funktion -->
+<body onload="protectTeacherPage(); loadSchoolLeaderboard();">
 
 <div class="layout">
 
@@ -35,7 +36,7 @@
                 <span>👥</span> Grupper
             </a>
 
-            <a href="leaderboard.html" class="menu-item">
+            <a href="leaderboard.html" class="menu-item active">
                 <span>🏆</span> Leaderboard
             </a>
 
@@ -51,7 +52,6 @@
 
     </aside>
 
-
     <!-- MAIN -->
     <main class="content">
 
@@ -59,104 +59,44 @@
         <header class="topbar">
 
             <div>
-
                 <h1>Leaderboard</h1>
-
-                <p>
-                    Sammenlign grupper og skoler på præcision, CO₂ og score.
-                </p>
-
+                <p>Sammenlign skoler på præcision, CO₂ og score.</p>
             </div>
 
-            <div class="topbar-actions">
-
-                <div class="user-box">
-
-                    <button
-                        type="button"
-                        class="logout-btn global-logout"
-                        onclick="logout()">
-
-                        Log ud →
-
-                    </button>
-
-                </div>
-
-            </div>
+            <button class="logout-btn" onclick="logout()">
+                Log ud →
+            </button>
 
         </header>
 
+        <!-- ERROR -->
+        <div id="errorBox" class="error-box" style="display:none;"></div>
 
-        <!-- Error message -->
-        <div
-            id="errorBox"
-            class="error-box"
-            style="display: none;">
-        </div>
-
-
-        <!-- LEADERBOARD TYPE TABS -->
+        <!-- FILTER -->
         <div class="leader-tabs">
 
-            <button
-                type="button"
-                id="schoolLeaderboardTab"
-                class="leader-tab active"
-                onclick="changeLeaderboardType('schools')">
-
+            <button class="leader-tab active" onclick="loadSchoolLeaderboard()">
                 Skoler
-
-            </button>
-
-            <button
-                type="button"
-                id="classLeaderboardTab"
-                class="leader-tab"
-                onclick="changeLeaderboardType('classes')">
-
-                Grupper
-
             </button>
 
         </div>
 
-
-        <!-- ROAD TYPE TABS -->
+        <!-- ROAD FILTER -->
         <div class="leader-tabs">
 
-            <button
-                type="button"
-                id="byzoneTab"
-                class="leader-tab active"
-                onclick="changeLeaderboardRoadType('Byzone')">
-
+            <button class="leader-tab active" onclick="filterLeaderboard('road', 'byzone')">
                 Byzone 50
-
             </button>
 
-            <button
-                type="button"
-                id="landevejTab"
-                class="leader-tab"
-                onclick="changeLeaderboardRoadType('Landevej')">
-
+            <button class="leader-tab" onclick="filterLeaderboard('road', 'landevej')">
                 Landevej 80
-
             </button>
 
-            <button
-                type="button"
-                id="motorvejTab"
-                class="leader-tab"
-                onclick="changeLeaderboardRoadType('Motorvej')">
-
+            <button class="leader-tab" onclick="filterLeaderboard('road', 'motorvej')">
                 Motorvej 130
-
             </button>
 
         </div>
-
 
         <!-- GRID -->
         <section class="leaderboard-grid">
@@ -167,29 +107,20 @@
                 <table>
 
                     <thead>
-
                         <tr>
-
                             <th>Placering</th>
                             <th>Navn</th>
                             <th>Gns. CO₂</th>
                             <th>Antal målinger</th>
                             <th>Score</th>
-
                         </tr>
-
                     </thead>
 
-                    <tbody id="leaderboardBody">
-
+                    <!-- 🔥 FIX: korrekt id -->
+                    <tbody id="leaderboardTableBody">
                         <tr>
-
-                            <td colspan="5">
-                                Indlæser leaderboard...
-                            </td>
-
+                            <td colspan="5">Indlæser leaderboard...</td>
                         </tr>
-
                     </tbody>
 
                 </table>
@@ -200,17 +131,14 @@
 
             </div>
 
-
-            <!-- RIGHT PANEL -->
+            <!-- SIDE -->
             <div class="card leader-side">
 
                 <h3>Din skole</h3>
 
                 <div class="school-box">
 
-                    <div class="school-icon">
-                        🏫
-                    </div>
+                    <div class="school-icon">🏫</div>
 
                     <div>
 
@@ -218,13 +146,9 @@
                             Køge Skole
                         </strong>
 
-                        <p>
-                            Din placering
-                        </p>
+                        <p>Din placering</p>
 
-                        <h2 id="ownSchoolRank">
-                            ---
-                        </h2>
+                        <h2 id="ownSchoolRank">---</h2>
 
                         <p class="green" id="ownSchoolScore">
                             Score opdateres når leaderboard hentes
@@ -234,36 +158,20 @@
 
                 </div>
 
-
                 <h4>Top 3</h4>
 
                 <ol class="top-three" id="topThreeList">
-
-                    <li>
-                        Indlæser top 3...
-                    </li>
-
+                    <li>Indlæser top 3...</li>
                 </ol>
-
 
                 <div class="score-expl">
 
                     <h4>Sådan beregnes score</h4>
 
                     <ul>
-
-                        <li>
-                            Præcis hastighed tæt på fartgrænsen
-                        </li>
-
-                        <li>
-                            Lav CO₂-udledning
-                        </li>
-
-                        <li>
-                            Bedste afsluttede session tæller
-                        </li>
-
+                        <li>Præcis hastighed tæt på fartgrænsen</li>
+                        <li>Lav CO₂-udledning</li>
+                        <li>Bedste afsluttede session tæller</li>
                     </ul>
 
                 </div>
@@ -276,37 +184,25 @@
 
 </div>
 
-
-<!-- Active menu -->
+<!-- ACTIVE MENU -->
 <script>
+const links = document.querySelectorAll(".menu-item");
+const currentPage = window.location.pathname.split("/").pop();
 
-const links =
-    document.querySelectorAll(".menu-item");
-
-const currentPage =
-    window.location.pathname.split("/").pop();
-
-for (let index = 0; index < links.length; index++) {
-
-    const link =
-        links[index];
-
-    if (link.getAttribute("href") === currentPage) {
-
-        link.classList.add("active");
+for (let i = 0; i < links.length; i++) {
+    if (links[i].getAttribute("href") === currentPage) {
+        links[i].classList.add("active");
     }
 }
-
 </script>
 
+<!-- 🔥 VIGTIGT: leaderboard.js -->
+<script src="leaderboard.js"></script>
 
-<!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
 <script src="api.js"></script>
-
 <script src="underviser.js"></script>
+<script src="leaderboard.js"></script>
 
 </body>
-
 </html>

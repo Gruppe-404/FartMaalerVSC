@@ -148,38 +148,17 @@ async function createGroup() {
 
     clearError();
 
-    const groupNameInput =
-        document.getElementById("groupNameInput");
+    const name =
+        document.getElementById("groupNameInput").value;
 
-    const schoolNameInput =
-        document.getElementById("schoolNameInput");
-
-    if (groupNameInput === null) {
-        return;
-    }
-
-    const groupName =
-        groupNameInput.value;
-
-    let schoolName =
-        "Køge Skole";
-
-    if (schoolNameInput !== null && schoolNameInput.value !== "") {
-        schoolName = schoolNameInput.value;
-    }
-
-    if (groupName === "") {
-
-        showError(
-            "Skriv gruppenavn"
-        );
-
+    if (!name) {
+        showError("Skriv et gruppenavn");
         return;
     }
 
     const newGroup = {
-        name: groupName,
-        school: schoolName
+        name: name,
+        school: "Køge Skole"
     };
 
     try {
@@ -189,23 +168,15 @@ async function createGroup() {
             newGroup
         );
 
-        groupNameInput.value =
-            "";
-
-        if (schoolNameInput !== null) {
-            schoolNameInput.value = "";
-        }
+        document.getElementById("groupNameInput").value = "";
 
         loadGroups();
-    }
 
-    catch(error) {
+    } catch (error) {
 
         console.log(error);
 
-        showError(
-            "Kunne ikke oprette gruppe. Tjek om navnet allerede findes."
-        );
+        showError("Kunne ikke oprette gruppe");
     }
 }
 

@@ -31,7 +31,7 @@
                 <span>📏</span> Målinger
             </a>
 
-            <a href="gruppe.html" class="menu-item">
+            <a href="gruppe.html" class="menu-item active">
                 <span>👥</span> Grupper
             </a>
 
@@ -40,7 +40,7 @@
             </a>
 
             <a href="sessions.html" class="menu-item">
-                 <span>📊</span> Session
+                <span>📊</span> Sessioner
             </a>
 
             <a href="indstillinger.html" class="menu-item">
@@ -51,7 +51,7 @@
 
     </aside>
 
-    <!-- main -->
+    <!-- MAIN -->
     <main class="content">
 
         <!-- HEADER -->
@@ -71,8 +71,7 @@
         <!-- ERROR -->
         <div id="errorBox" class="error-box" style="display:none;"></div>
 
-
-        <!-- 🔹 REGISTREREDE GRUPPER -->
+        <!-- GRUPPER -->
         <section class="card">
 
             <h3>Registrerede grupper</h3>
@@ -91,20 +90,16 @@
                 </thead>
 
                 <tbody id="groupTableBody">
-
-                    <!-- DATA FRA JS -->
                     <tr>
                         <td colspan="6">Indlæser grupper...</td>
                     </tr>
-
                 </tbody>
 
             </table>
 
         </section>
 
-
-        <!-- 🔹 OPRET GRUPPE -->
+        <!-- OPRET -->
         <section class="card">
 
             <h3>Opret ny gruppe</h3>
@@ -120,7 +115,6 @@
                     type="button"
                     class="save-btn"
                     onclick="createGroup()">
-
                     Opret
                 </button>
 
@@ -131,51 +125,49 @@
     </main>
 </div>
 
+<!-- 🔥 DELETE MODAL (NY KORREKT) -->
+<div id="deleteGroupModal" class="modal-overlay">
+    <div class="modal-box">
 
-<!-- 🔹 DELETE POPUP -->
-<div id="deleteModal" class="modal">
-    <div class="modal-content">
-
-        <h3>Slet gruppe</h3>
-        <p>Er du sikker på at du vil slette denne gruppe?</p>
+        <h2>Slet gruppe</h2>
+        <p>Er du sikker på, at du vil slette denne gruppe?</p>
 
         <div class="modal-actions">
-            <button class="danger-btn" onclick="confirmDelete()">
-                Ja, slet
+            <button onclick="closeDeleteModal()" class="btn-secondary">
+                Annuller
             </button>
 
-            <button onclick="closeModal()">
-                Annuller
+            <button onclick="confirmDeleteGroup()" class="btn-danger">
+                Slet
             </button>
         </div>
 
     </div>
 </div>
 
+<!-- 🔥 EDIT MODAL (NY KORREKT) -->
+<div id="editGroupModal" class="modal-overlay">
+    <div class="modal-box">
 
-<!-- 🔹 EDIT POPUP -->
-<div id="editModal" class="modal">
-    <div class="modal-content">
+        <h2>Rediger gruppe</h2>
 
-        <h3>Rediger gruppe</h3>
-
-        <input type="text" id="editGroupName">
+        <input type="text" id="editNameInput" placeholder="Gruppenavn">
+        <input type="text" id="editSchoolInput" placeholder="Skole (valgfri)">
 
         <div class="modal-actions">
-            <button class="save-btn" onclick="saveEdit()">
+            <button onclick="closeEditModal()" class="btn-secondary">
+                Annuller
+            </button>
+
+            <button onclick="confirmEditGroup()" class="btn-danger">
                 Gem
             </button>
-
-            <button onclick="closeModal()">
-                Annuller
-            </button>
         </div>
 
     </div>
 </div>
 
-
-<!-- 🔹 ACTIVE MENU -->
+<!-- ACTIVE MENU -->
 <script>
 const links = document.querySelectorAll(".menu-item");
 const currentPage = window.location.pathname.split("/").pop();
@@ -187,18 +179,10 @@ for (let i = 0; i < links.length; i++) {
 }
 </script>
 
-
-<!-- 🔹 AXIOS -->
+<!-- SCRIPTS -->
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
-<!-- 🔹 API -->
 <script src="api.js"></script>
-
-<!-- 🔹 LOGIC -->
 <script src="underviser.js"></script>
 
 </body>
 </html>
-
-
-
