@@ -1,6 +1,6 @@
 let selectedGroupId = null;
 
-// 🔥 LOAD GROUPS
+
 async function loadGroups() {
 
     const body = document.getElementById("groupTableBody");
@@ -36,7 +36,7 @@ async function loadGroups() {
     }
 }
 
-// 🔥 CREATE GROUP
+
 async function createGroup() {
 
     const name = document.getElementById("groupNameInput").value;
@@ -61,7 +61,7 @@ async function createGroup() {
     }
 }
 
-// 🔥 OPEN EDIT MODAL
+
 function openEditModal(id, name) {
 
     selectedGroupId = id;
@@ -72,12 +72,12 @@ function openEditModal(id, name) {
     document.getElementById("editGroupModal").style.display = "flex";
 }
 
-// 🔥 CLOSE EDIT
+
 function closeEditModal() {
     document.getElementById("editGroupModal").style.display = "none";
 }
 
-// 🔥 SAVE EDIT
+
 async function confirmEditGroup() {
 
     const name = document.getElementById("editNameInput").value;
@@ -107,7 +107,7 @@ async function confirmEditGroup() {
     }
 }
 
-// 🔥 OPEN DELETE MODAL
+
 function openDeleteModal(id) {
 
     selectedGroupId = id;
@@ -115,12 +115,12 @@ function openDeleteModal(id) {
     document.getElementById("deleteGroupModal").style.display = "flex";
 }
 
-// 🔥 CLOSE DELETE
+
 function closeDeleteModal() {
     document.getElementById("deleteGroupModal").style.display = "none";
 }
 
-// 🔥 CONFIRM DELETE
+
 async function confirmDeleteGroup() {
 
     try {
